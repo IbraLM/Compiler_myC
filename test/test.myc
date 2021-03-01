@@ -1,0 +1,122 @@
+void testDeclaration(){
+    int a, b;
+    int** c, d;
+    float e;
+    a = 1;
+    b = a;
+    c = d;
+}
+
+void testExpressionArithmetique() {
+    int a, b, c;
+    a = 1;
+    a = a + a;
+    b = a + (2 - 3) * 4 / 5;
+    c = -b;
+}
+
+void testBooleen() {
+    int i, j;
+    i = 2;
+    j = !i;
+    j = 1 < 2;
+    j = 1 > 2;
+    j = 1 == 2;
+    j = 1 != 2;
+    j = 1 && 0;
+    j = 1 || 0;
+}
+
+void testFloat() {
+    float a, b, c;
+    a = 1.1;
+    b = a + 2.2 * 3.3;
+    c = -a;
+}
+
+void testPointeur() {
+    int x;
+    int y;
+    int* z;
+    x = 1;
+    *z = x;
+    y = *z;
+}
+
+void testIf() {
+    int i,j,k;
+    i = 3;
+    j = 1;
+    k = 1;
+    if (i < 4) {
+        i = i + 3;
+    }
+    else {
+        j = 5;
+    };
+
+    if (i < 4) {
+        k = 8;
+    };
+}
+
+void testWhile() {
+    int i, k;
+    i = 0;
+    k = 2;
+    while (i < 4) {
+        k = k * 2;
+        i = i + 1;
+    }
+}
+
+
+void testFunctionVoidArg(int i) {
+    i = i + 1;
+}
+
+int testFunctionIntNoArg() {
+    return 4;
+}
+
+int testFunctionIntArg(int k) {
+    return k * 2;
+}
+int testFunctionIntThreeArg(int x, int y, int t) {
+    int z;
+    z = x + y + t;
+    return z;
+}
+
+int testFunctionRecursive(int a, int b) {
+    if (a < 3) {return 1 + testFunctionRecursive(a + 1, b)} else {return b}
+}
+
+int testReturn() {
+    int q;
+    q = 4;
+    return q;
+    q = 5;
+    return q;
+}
+
+void main() {
+    int a, b, c, d, e, f;
+
+    testDeclaration();
+    testExpressionArithmetique();
+    testBooleen();
+    testFloat();
+
+    testIf();
+    testWhile();
+
+    testFunctionVoidArg(2);
+    a = testFunctionIntNoArg();
+    b = testFunctionIntArg(2);
+    c = testFunctionIntThreeArg(2,4,6);
+    d = testFunctionRecursive(1,2);
+    e = testFunctionRecursive(2,3);
+    f = testReturn();
+}
+

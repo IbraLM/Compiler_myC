@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#quit if given argument is not valid
+if [ "$#" != 1 ]; then
+  echo "ERROR: Wrong number of argument -> 1 required"
+  echo "Please retry with \"./compil <file>.myc\" "
+  exit 1
+
+elif [ ${1#*.} != "myc" ]; then
+  echo "ERROR: Wrong file type -> .myc required"
+  echo "Please retry with \"./compil <file>.myc\" "
+  exit 2
+  
+elif [ ! -e "$1" ]; then
+  echo "ERROR: $1 don't exist"
+  echo "Please retry with an existing file"
+  exit 3
+fi
+
+#create the executable of the myc compiler
+make myc
+
+#compile the myc file given as a c file
+./myc < "$1"
+
+if [ "$?" != 0 ]; then
+    echo "failed to compile your myc file"
+    make clean
+    exit 4
+fi
+
+#compile the c file as an executable
+gcc -o test/test test/test.h test/test.c
+
+#remove useless files
+rm -f 	lex.yy.c *.o y.tab.h y.tab.c *~ y.output myc
